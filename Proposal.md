@@ -23,11 +23,8 @@ We are interested in exploring the following questions:
 Our final product would be a one-stop platform. We would present the customized results through a series of visualizations that allow the users to filter the data based on factors of interest. As an example of the use case, one may be interested in knowing top 10 companies that offer visa sponsorship to software engineer roles. Additionally, we will develop a machine learning-based model to predict the probability of visa approval based on the personal information of the user.
 
 ### Datasets
-H1B employers data hub
-https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub/h-1b-employer-data-hub-files
-LCA data for H1B, H1B1, E3
-https://www.dol.gov/agencies/eta/foreign-labor/performance
+1. [H1B employers data hub, United States Citizenship and Immigration Services](https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub/h-1b-employer-data-hub-files)
+2. [LCA data for H1B, H1B1, E3, US Department of Labor](https://www.dol.gov/agencies/eta/foreign-labor/performance)
 
 ### References
-Prediction of H1B Visa Using Machine Learning Algorithms
-https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg
+1. [Prediction of H1B Visa Using Machine Learning Algorithms](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg)
