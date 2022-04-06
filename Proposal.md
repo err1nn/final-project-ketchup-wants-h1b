@@ -1,8 +1,7 @@
 # Final Project Proposal
 
-**GitHub Repo URL**: https://github.com/CMU-IDS-2022/final-project-ketchup-wants-h1b
-
-Topic: A Customized Platform to Understand the H-1B Visa Application Status and A Machine Learning-Based Prediction Model
+**GitHub Repo URL:** https://github.com/CMU-IDS-2022/final-project-ketchup-wants-h1b
+**Topic:** A Customized Platform to Understand the H-1B Visa Application Status and A Machine Learning-Based Prediction Model
 
 ### Motivation
 The H-1B visa allows employers in the United States to temporarily employ foreign workers in occupations that require the theoretical and practical application of a body of highly specialized knowledge and a bachelor's degree or higher in the specific specialty or its equivalent.
@@ -28,3 +27,9 @@ Our final product would be a one-stop platform. We would present the customized 
 
 ### References
 1. Swain, D., Chakraborty, K., Dombe, A., Ashture, A., & Valakunde, N. (2018, December). [Prediction of H1B Visa Using Machine Learning Algorithms.](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg) In 2018 International Conference on Advanced Computation and Telecommunication (ICACAT) (pp. 1-7). IEEE.
+
+## Sketches and Data Analysis
+
+### Data Processing
+
+### System Design
