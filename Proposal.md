@@ -1,6 +1,7 @@
 # Final Project Proposal
 
 **GitHub Repo URL:** https://github.com/CMU-IDS-2022/final-project-ketchup-wants-h1b
+
 **Topic:** A Customized Platform to Understand the H-1B Visa Application Status and A Machine Learning-Based Prediction Model
 
 ### Motivation
