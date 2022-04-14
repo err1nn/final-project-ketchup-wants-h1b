@@ -29,11 +29,11 @@ Our final product would be a one-stop platform. We would present the customized 
 ### Sketches and Data Analysis
 
 #### Data Processing
-We will provide visualizations and the prediction application using the following two datasets. In all, the data cleaning and processing are not substantial since the raw dataset has already been cleaned, and all we need is to extract the useful information from them and convert them into the right format for visualizations.
+We will provide visualizations and the prediction application using the following two datasets. In all, the data cleaning and processing are not substantial since the raw dataset has already been clean, and all we need to do is extract the useful information from them and convert them into the right format for visualizations.
 
 **1. H-1B Employer Data**
 
-We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We will also sum Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
+We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
 We plan to use this data to generate a choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view.
 
@@ -59,7 +59,7 @@ For data pre-processing, we first filtered the data by visa type and only kept H
 | FOREIGN_WORKER_EDUCATION|
 | FOREIGN_WORKER_INFO_MAJOR|
 
-For ML-based prediction model, we will partition the data into two groups, 80% for training and 20% for testing.
+In addition to insightful visualizations, we will also build a ML-based prediction model using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
 
 #### System Design
 How will you display your data? What types of interactions will you support? Provide some sketches that you have for the system design.
