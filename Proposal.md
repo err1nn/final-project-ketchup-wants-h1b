@@ -35,13 +35,11 @@ We will provide visualizations and the prediction application using the followin
 
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
-We plan to use this data to generate a choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view.
-
 **2. LCA Data (H-1B Applicants Data)**
 
-We collected annual data from 2019 to 2021 and combined three datasets into one.
+We collected annual LCA data from 2019 to 2021 and combined three datasets into one.
 
-For data pre-processing, we first filtered the data by visa type and only kept H-1B visa applications. Second, we removed the columns that we are not using in the prediction model. There are 13 columns in our final dataset. Finally, we removed all rows which include missing values (NA) to have the complete data for model training and it is feasible because there is only a little amount of data that contain NA. Our final data has 123,863 rows.
+To generate exploratory visualizations, we first pre-processed the data by filtering the data by visa type and only keeping H-1B visa applications. Second, we removed the columns that we will not be not using in the prediction model. There are 13 columns in our final dataset (See the below table). Finally, we removed all rows which include missing values (NA) to have the complete data for model training and it is feasible because there is only a small amount of data that contain NA. Our final data has 123,863 rows.
 
 | Variable      |
 | ------------- |
@@ -59,10 +57,24 @@ For data pre-processing, we first filtered the data by visa type and only kept H
 | FOREIGN_WORKER_EDUCATION|
 | FOREIGN_WORKER_INFO_MAJOR|
 
-In addition to insightful visualizations, we will also build a ML-based prediction model using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
+In addition to visualizations, we will also build a logistic regression model to predict the H-1B application result using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
 
 #### System Design
 How will you display your data? What types of interactions will you support? Provide some sketches that you have for the system design.
+
+We plan to derive four quantities from the two datasets. Below are the sketches of the intended visualizations.
+
+- Choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view
+*(Sketch)*
+
+- Viz 2
+*(Sketch)*
+
+- Viz 3
+*(Sketch)*
+
+- Viz 4
+*(Sketch)*
 
 ### References
 1. Swain, D., Chakraborty, K., Dombe, A., Ashture, A., & Valakunde, N. (2018, December). [Prediction of H1B Visa Using Machine Learning Algorithms.](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg) In 2018 International Conference on Advanced Computation and Telecommunication (ICACAT) (pp. 1-7). IEEE.
