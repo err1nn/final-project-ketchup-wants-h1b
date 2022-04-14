@@ -37,8 +37,7 @@ Our final product would be a one-stop platform. We would present the customized 
 We selected the data from 2019 to 2021 and combine three datasets into one. We only keep columns like Employer, State, City, ZIP. Also, we sum Initial Approval and Continuing Approval into Approval, Initial Denial and Continuing Deinal into Denial.
 
 #### LCA data
-[Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)
-We selected data from 2019 to 2021 and combined three datasets together. First of all, we filter the data by visa type and only keep H1B visa applications. Second, we remove the columns which cannot provide us useful information for visualization or building a prediction model. We only keep 13 columns for our model training process:
+We selected data from 2019 to 2021 and combined three datasets together. First of all, we filter the data by visa type and only keep H1B visa applications. Second, we remove the columns which cannot provide us useful information for visualization or building a prediction model. ([Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)) We only keep 13 columns for our model training process:
 - CASE_NUMBER                     
 - CASE_STATUS                     
 - RECEIVED_DATE                   
