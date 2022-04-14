@@ -29,12 +29,17 @@ Our final product would be a one-stop platform. We would present the customized 
 ### Sketches and Data Analysis
 
 #### Data Processing
-- Do you have to do substantial data cleanup? What quantities do you plan to derive from your data? How will data processing be implemented?  Show some screenshots of your data to demonstrate you have explored it.
-##### H1B employer data
-We selected the data from 2019 to 2021 and combine three datasets into one. We only keep columns like Employer, State, City, ZIP. Also, we sum Initial Approval and Continuing Approval into Approval, Initial Denial and Continuing Deinal into Denial.
+We will provide visualizations and the prediction application using the following two datasets.
+
+##### H-1B employer data
+We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We will also sum Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
+
+We plan to use this data to generate a choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view.
 
 ##### LCA data
-We selected data from 2019 to 2021 and combined three datasets together. First of all, we filter the data by visa type and only keep H1B visa applications. Second, we remove the columns which cannot provide us useful information for visualization or building a prediction model. ([Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)) We only keep 13 columns for our model training process:
+We collected annual data from 2019 to 2021 and combined three datasets into one.
+
+For data pre-processing, we first filtered the data by visa type and only kept H-1B visa applications. Second, we removed the columns that we are not using in the prediction model. ([Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)) There are 13 columns in our final dataset, below are the short descriptions for each column. Finally, we removed all rows which include NA to have the complete data for model training. Our final data has 123,863 rows.
 - CASE_NUMBER                     
 - CASE_STATUS                     
 - RECEIVED_DATE                   
@@ -47,8 +52,9 @@ We selected data from 2019 to 2021 and combined three datasets together. First o
 - JOB_TITLE                       
 - COUNTRY_OF_CITIZENSHIP          
 - FOREIGN_WORKER_EDUCATION        
-- FOREIGN_WORKER_INFO_MAJOR   
-Finally, we remove all rows which include na. Our final data has 123,863 rows. 
+- FOREIGN_WORKER_INFO_MAJOR
+
+For ML-based prediction model, we will partition the data into two groups, 80% for training and 20% for testing.
 
 #### System Design
 How will you display your data? What types of interactions will you support? Provide some sketches that you have for the system design.
