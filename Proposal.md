@@ -33,7 +33,26 @@ Our final product would be a one-stop platform. We would present the customized 
 
 ### Data Processing
 - Do you have to do substantial data cleanup? What quantities do you plan to derive from your data? How will data processing be implemented?  Show some screenshots of your data to demonstrate you have explored it.
+#### H1B employer data
+We selected the data from 2019 to 2021 and combine three datasets into one. We only keep columns like Employer, State, City, ZIP. Also, we sum Initial Approval and Continuing Approval into Approval, Initial Denial and Continuing Deinal into Denial.
 
+#### LCA data
+[Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)
+We selected data from 2019 to 2021 and combined three datasets together. First of all, we filter the data by visa type and only keep H1B visa applications. Second, we remove the columns which cannot provide us useful information for visualization or building a prediction model. We only keep 13 columns for our model training process:
+- CASE_NUMBER                     
+- CASE_STATUS                     
+- RECEIVED_DATE                   
+- DECISION_DATE                   
+- EMPLOYER_NAME                   
+- EMPLOYER_NUM_EMPLOYEES        
+- WORKSITE_CITY                   
+- WORKSITE_STATE                  
+- WAGE_OFFER_FROM                 
+- JOB_TITLE                       
+- COUNTRY_OF_CITIZENSHIP          
+- FOREIGN_WORKER_EDUCATION        
+- FOREIGN_WORKER_INFO_MAJOR   
+Finally, we remove all rows which include na. Our final data has 123,863 rows. 
 
 ### System Design
 How will you display your data? What types of interactions will you support? Provide some sketches that you have for the system design.
