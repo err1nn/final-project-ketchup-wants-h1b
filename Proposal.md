@@ -29,7 +29,7 @@ Our final product would be a one-stop platform. We would present the customized 
 ### Sketches and Data Analysis
 
 #### Data Processing
-We will provide visualizations and the prediction application using the following two datasets.
+We will provide visualizations and the prediction application using the following two datasets. In all, the data cleaning and processing are not substantial since the raw dataset has already been cleaned, and all we need is to extract the useful information from them and convert them into the right format for visualizations.
 
 **1. H-1B Employer Data**
 
@@ -41,20 +41,23 @@ We plan to use this data to generate a choropleth map that shows the aggregate s
 
 We collected annual data from 2019 to 2021 and combined three datasets into one.
 
-For data pre-processing, we first filtered the data by visa type and only kept H-1B visa applications. Second, we removed the columns that we are not using in the prediction model. ([Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)) There are 13 columns in our final dataset, below are the short descriptions for each column. Finally, we removed all rows which include NA to have the complete data for model training. Our final data has 123,863 rows.
-- CASE_NUMBER                     
-- CASE_STATUS                     
-- RECEIVED_DATE                   
-- DECISION_DATE                   
-- EMPLOYER_NAME                   
-- EMPLOYER_NUM_EMPLOYEES        
-- WORKSITE_CITY                   
-- WORKSITE_STATE                  
-- WAGE_OFFER_FROM                 
-- JOB_TITLE                       
-- COUNTRY_OF_CITIZENSHIP          
-- FOREIGN_WORKER_EDUCATION        
-- FOREIGN_WORKER_INFO_MAJOR
+For data pre-processing, we first filtered the data by visa type and only kept H-1B visa applications. Second, we removed the columns that we are not using in the prediction model. There are 13 columns in our final dataset. Finally, we removed all rows which include missing values (NA) to have the complete data for model training and it is feasible because there is only a little amount of data that contain NA. Our final data has 123,863 rows.
+
+| Variable      |
+| ------------- |
+| CASE_NUMBER   |
+| CASE_STATUS   |
+| RECEIVED_DATE |
+| DECISION_DATE |
+| EMPLOYER_NAME |
+| EMPLOYER_NUM_EMPLOYEES|
+| WORKSITE_CITY |
+| WORKSITE_STATE|
+| WAGE_OFFER_FROM|
+| JOB_TITLE     |
+| COUNTRY_OF_CITIZENSHIP|
+| FOREIGN_WORKER_EDUCATION|
+| FOREIGN_WORKER_INFO_MAJOR|
 
 For ML-based prediction model, we will partition the data into two groups, 80% for training and 20% for testing.
 
