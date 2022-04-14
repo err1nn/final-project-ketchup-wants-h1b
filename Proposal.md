@@ -31,12 +31,12 @@ Our final product would be a one-stop platform. We would present the customized 
 #### Data Processing
 We will provide visualizations and the prediction application using the following two datasets.
 
-##### H-1B employer data
+**1. H-1B Employer Data**
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We will also sum Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
 We plan to use this data to generate a choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view.
 
-##### LCA data
+**2. LCA Data (H-1B Applicants Data)**
 We collected annual data from 2019 to 2021 and combined three datasets into one.
 
 For data pre-processing, we first filtered the data by visa type and only kept H-1B visa applications. Second, we removed the columns that we are not using in the prediction model. ([Inital data columns](https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2020.pdf)) There are 13 columns in our final dataset, below are the short descriptions for each column. Finally, we removed all rows which include NA to have the complete data for model training. Our final data has 123,863 rows.
