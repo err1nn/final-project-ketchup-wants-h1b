@@ -82,5 +82,7 @@ We plan to derive four quantities from the two datasets. Below are the sketches 
 - Choropleth world map to show that what country did the H1B applicants come from for a user-selected company and job title
 ![Sketch4](/sketch/Sketch4.jpg)
 
+- Predictive model to calculate the probability of getting H1B visa approval based on user's input data
+- 
 ### References
 1. Swain, D., Chakraborty, K., Dombe, A., Ashture, A., & Valakunde, N. (2018, December). [Prediction of H1B Visa Using Machine Learning Algorithms.](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg) In 2018 International Conference on Advanced Computation and Telecommunication (ICACAT) (pp. 1-7). IEEE.
