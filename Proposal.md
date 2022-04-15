@@ -71,7 +71,7 @@ How will you display your data? What types of interactions will you support? Pro
 We plan to derive four quantities from the two datasets. Below are the sketches of the intended visualizations.
 
 - Choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view
-*(Sketch)*
+![Sketch1](/sketch/Sketch1.png)
 
 - The top 10 job title for a major that user interested in and grouped by approved and denied
 ![Sketch2](/sketch/Sketch2.jpg)
