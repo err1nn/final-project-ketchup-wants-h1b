@@ -72,13 +72,13 @@ We plan to derive four quantities from the two datasets. Below are the sketches 
 - Choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view
 *(Sketch)*
 
-- The top 10 job title for a major that user interested in.
+- The top 10 job title for a major that user interested in and grouped by approved and denied
 *(Sketch)*
 
-- Viz 3
+- The distribution (Boxplot) of wage of user-selected states and grouped by approved and denied
 *(Sketch)*
 
-- Viz 4
+- Choropleth world map to show that what country did the H1B applicants come from for a user-selected company and job title
 *(Sketch)*
 
 ### References
