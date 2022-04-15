@@ -83,6 +83,8 @@ We plan to derive four quantities from the two datasets. Below are the sketches 
 ![Sketch4](/sketch/Sketch4.jpg)
 
 - Predictive model to calculate the probability of getting H1B visa approval based on user's input data
-- 
+![Sketch5](/sketch/Sketch5.jpg)
+
+
 ### References
 1. Swain, D., Chakraborty, K., Dombe, A., Ashture, A., & Valakunde, N. (2018, December). [Prediction of H1B Visa Using Machine Learning Algorithms.](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg) In 2018 International Conference on Advanced Computation and Telecommunication (ICACAT) (pp. 1-7). IEEE.
