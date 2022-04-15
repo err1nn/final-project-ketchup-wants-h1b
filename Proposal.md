@@ -34,7 +34,7 @@ We will provide visualizations and the prediction application using the followin
 **1. H-1B Employer Data**
 
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
-![Data screenshot1](Sketch/Screen Shot 2022-04-14 at 21.00.50.png)
+[Data screenshot1](Sketch/Screen Shot 2022-04-14 at 21.00.50.png)
 
 **2. LCA Data (H-1B Applicants Data)**
 
@@ -58,7 +58,7 @@ To generate exploratory visualizations, we first pre-processed the data by filte
 | FOREIGN_WORKER_EDUCATION|
 | FOREIGN_WORKER_INFO_MAJOR|
 
-![Data Screenshot2](Sketch/Screen Shot 2022-04-14 at 21.01.59.png)
+[Data Screenshot2](Sketch/Screen Shot 2022-04-14 at 21.01.59.png)
 
 In addition to visualizations, we will also build a logistic regression model to predict the H-1B application result using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
 
