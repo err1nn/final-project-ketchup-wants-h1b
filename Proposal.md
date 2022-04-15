@@ -36,9 +36,9 @@ We will provide visualizations and the prediction application using the followin
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
 ```python
-import pandas as pd
-employer_data = pd.read_csv('Data/h1b_empoyers.csv')
-employer
+>>> import pandas as pd
+>>> employer_data = pd.read_csv('Data/h1b_empoyers.csv')
+>>> employer
 ```
 
 **2. LCA Data (H-1B Applicants Data)**
