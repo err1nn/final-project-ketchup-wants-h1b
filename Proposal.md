@@ -35,6 +35,7 @@ We will provide visualizations and the prediction application using the followin
 
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
+Screenshot of data:
 ![Data screenshot1](/sketch/application_data.png)
 
 **2. LCA Data (H-1B Applicants Data)**
@@ -42,8 +43,6 @@ We collected the annaul data from 2019 to 2021 and combined three datasets into 
 We collected annual LCA data from 2019 to 2021 and combined three datasets into one.
 
 To generate exploratory visualizations, we first pre-processed the data by filtering the data by visa type and only keeping H-1B visa applications. Second, we removed the columns that we will not be not using in the prediction model. There are 13 columns in our final dataset (See the below table). Finally, we removed all rows which include missing values (NA) to have the complete data for model training and it is feasible because there is only a small amount of data that contain NA. Our final data has 123,863 rows.
-
-![Data Screenshot2](/sketch/employer_data.png)
 
 | Variable      |
 | ------------- |
@@ -61,6 +60,8 @@ To generate exploratory visualizations, we first pre-processed the data by filte
 | FOREIGN_WORKER_EDUCATION|
 | FOREIGN_WORKER_INFO_MAJOR|
 
+Screenshot of data:
+![Data Screenshot2](/sketch/employer_data.png)
 
 In addition to visualizations, we will also build a logistic regression model to predict the H-1B application result using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
 
@@ -73,13 +74,13 @@ We plan to derive four quantities from the two datasets. Below are the sketches 
 *(Sketch)*
 
 - The top 10 job title for a major that user interested in and grouped by approved and denied
-*(Sketch)*
+![Sketch2](/sketch/Sketch2.jpg)
 
 - The distribution (Boxplot) of wage of user-selected states and grouped by approved and denied
-*(Sketch)*
+![Sketch3](/sketch/Sketch3.jpg)
 
 - Choropleth world map to show that what country did the H1B applicants come from for a user-selected company and job title
-*(Sketch)*
+![Sketch4](/sketch/Sketch4.jpg)
 
 ### References
 1. Swain, D., Chakraborty, K., Dombe, A., Ashture, A., & Valakunde, N. (2018, December). [Prediction of H1B Visa Using Machine Learning Algorithms.](https://ieeexplore.ieee.org/abstract/document/8933628?casa_token=kw9Mm8Q-unoAAAAA:U80awNcdpk4JT3KkKXAomHdGDWywIcO4MUl-BGwBuJqJd5NhPpzb1DKgNTsfCzlQuONylqyIlg) In 2018 International Conference on Advanced Computation and Telecommunication (ICACAT) (pp. 1-7). IEEE.
