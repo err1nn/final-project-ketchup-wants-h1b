@@ -35,7 +35,7 @@ We will provide visualizations and the prediction application using the followin
 
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
-![Data screenshot1](/Sketch/employer_data.png)
+![Data screenshot1](/sketch/employer_data.png)
 
 **2. LCA Data (H-1B Applicants Data)**
 
@@ -43,7 +43,7 @@ We collected annual LCA data from 2019 to 2021 and combined three datasets into 
 
 To generate exploratory visualizations, we first pre-processed the data by filtering the data by visa type and only keeping H-1B visa applications. Second, we removed the columns that we will not be not using in the prediction model. There are 13 columns in our final dataset (See the below table). Finally, we removed all rows which include missing values (NA) to have the complete data for model training and it is feasible because there is only a small amount of data that contain NA. Our final data has 123,863 rows.
 
-![Data Screenshot2](/Sketch/application_data.png)
+![Data Screenshot2](/sketch/application_data.png)
 
 | Variable      |
 | ------------- |
