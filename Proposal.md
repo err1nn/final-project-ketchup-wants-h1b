@@ -35,6 +35,10 @@ We will provide visualizations and the prediction application using the followin
 
 We collected the annaul data from 2019 to 2021 and combined three datasets into one. We only kept columns including Employer, State, City, ZIP Code. We summed Initial Approval and Continuing Approval into Total Approval, Initial Denial and Continuing Deinal into Total Denial, to provide the complete data throughout the three years.
 
+```python
+
+```
+
 **2. LCA Data (H-1B Applicants Data)**
 
 We collected annual LCA data from 2019 to 2021 and combined three datasets into one.
@@ -67,7 +71,7 @@ We plan to derive four quantities from the two datasets. Below are the sketches 
 - Choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view
 *(Sketch)*
 
-- Viz 2
+- The top 10 job title for a major that user interested in.
 *(Sketch)*
 
 - Viz 3
