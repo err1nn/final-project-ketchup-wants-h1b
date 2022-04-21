@@ -14,7 +14,7 @@ st.title("H1B data visualization")
 def load_data(url, encode = 'utf-8'):
     return pd.read_csv(url, encoding = encode, index_col=0)
 
-url_application = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/h1b_application_for_ml.csv'
+url_application = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/h1b_application.csv'
 url_employer = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/h1b_employers.csv'
 
 application_df = load_data(url_application)
