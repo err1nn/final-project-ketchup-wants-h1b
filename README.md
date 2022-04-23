@@ -2,9 +2,9 @@
 
 * **Online URL**: TODO
 * **Team members**:
-  * Contact person: Feel free to reach out to either of us!
-  * lihsinl@andrew.cmu.edu
-  * hanjuh@andrew.cmu.edu
+  * [Erin Lin](lihsinl@andrew.cmu.edu)
+  * [Kylie Hsieh](hanjuh@andrew.cmu.edu)
+  * Feel free to reach out to either of us!
 
 ## Work distribution
 
