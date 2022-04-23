@@ -66,9 +66,8 @@ Screenshot of data:
 In addition to visualizations, we will also build a logistic regression model to predict the H-1B application result using this dataset. We will partition the data into two groups, 80% for training and 20% for testing.
 
 #### System Design
-How will you display your data? What types of interactions will you support? Provide some sketches that you have for the system design.
 
-We plan to derive four quantities from the two datasets. Below are the sketches of the intended visualizations.
+We plan to derive five quantities from the two datasets. Below are the sketches of the intended visualizations.
 
 - Choropleth map that shows the aggregate summary of total approved and denied H-1B applications from the spatial view
 ![Sketch1](/sketch/Sketch1.png)
