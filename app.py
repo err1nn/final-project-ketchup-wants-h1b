@@ -4,7 +4,8 @@ import streamlit as st
 import seaborn as sns
 import pandas as pd
 import altair as alt
-from PIL import Image
+import joblib
+import numpy as np
 
 st.set_page_config(
      page_title='H1B Data Visualization Application',
@@ -14,7 +15,7 @@ st.set_page_config(
 )
 
 st.title("Can I get my H1B visa?🥺🥺🥺")
-@st.cache  # add caching so we load the data only once
+#@st.cache  # add caching so we load the data only once
 #st.text("This application is aiming to ")
 
 # ===================================== PART 0 =====================================
@@ -25,10 +26,14 @@ def load_data(url, encode = 'utf-8'):
 
 url_application = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/h1b_application.csv'
 url_employer = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/h1b_employers.csv'
+url_column_name = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/data_columns.csv'
+url_ml = 'https://raw.githubusercontent.com/CMU-IDS-2022/final-project-ketchup-wants-h1b/main/Data/data_ml.csv'
 
 application = load_data(url_application)
 employer = load_data(url_employer)
-
+test = load_data(url_column_name)
+ml_data = load_data(url_ml)
+rf = joblib.load("rf.pkl")
 
 ##Side Bar
 st.sidebar.header('Feature Selection:')
@@ -91,5 +96,60 @@ if feature_selection == 'Data Visualization Dashboard':
 
 # Prediction Model
 elif feature_selection == 'Approval Probability Prediction Model':
-    st.header('Model here')
-    st.subheader("Predictive model to calculate the probability of getting H1B visa approval based on user's input")
+
+    st.subheader("Enter your information:")
+    ml_employer_list = sorted(ml_data.EMPLOYER_NAME.unique())
+    ml_state_list = sorted(ml_data.WORKSITE_STATE.unique())
+    ml_job_list = ml_data.JOB_TITLE.unique()
+    ml_country_list = ml_data.COUNTRY_OF_CITIZENSHIP.unique()
+    ml_education_list = ml_data.FOREIGN_WORKER_EDUCATION.unique()
+    ml_major_list = ml_data.FOREIGN_WORKER_INFO_MAJOR.unique()
+
+    employer_selection = st.selectbox(
+        'Employer Name', ml_employer_list
+    )
+    state_selection = st.selectbox(
+        'Worksite Location', ml_state_list
+    )
+    job_selection = st.selectbox(
+        'Job Title', ml_job_list
+    )
+    country_selection = st.selectbox(
+        'Country of Citizenship', ml_country_list
+    )
+    education_selection = st.selectbox(
+        'Education Level', ml_education_list
+    )
+    major_selection = st.selectbox(
+        'Major', ml_major_list
+    )
+    wage = st.number_input("Enter Expected Wage")
+
+
+    if st.button("Submit"):
+    
+    # Unpickle classifier
+        st.text("Calculating probability.")
+    # Store inputs into dataframe
+        if 'EMPLOYER_NAME_'+employer_selection in test.columns:
+            test['EMPLOYER_NAME_'+employer_selection] = 1
+        if 'WORKSITE_STATE_'+state_selection in test.columns:
+            test['WORKSITE_STATE_'+state_selection] = 1
+        if 'JOB_TITLE_'+job_selection in test.columns:
+            test['JOB_TITLE_'+job_selection] = 1
+        if 'COUNTRY_OF_CITIZENSHIP_'+country_selection in test.columns:
+            test['COUNTRY_OF_CITIZENSHIP_'+country_selection] = 1
+        if 'FOREIGN_WORKER_EDUCATION_'+education_selection in test.columns:
+            test['FOREIGN_WORKER_EDUCATION_'+education_selection] = 1
+        if 'FOREIGN_WORKER_INFO_MAJOR_'+major_selection in test.columns:
+            test['FOREIGN_WORKER_INFO_MAJOR_'+major_selection] = 1
+        test['WAGE_OFFER_FROM'] = wage
+     
+    # Get prediction
+        test = np.array(test.iloc[0])
+        test = test.reshape(1, -1)   
+        prediction = rf.predict(test)
+        probability = rf.predict_proba(test)[0][1]
+    
+    # Output prediction
+        st.subheader('The probability of certified is ' + str(round(probability,3)*100)+'%.')
