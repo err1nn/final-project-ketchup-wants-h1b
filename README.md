@@ -19,7 +19,7 @@ Update towards the end of the project.
 
 ### Sketches
 
-- [ ] Develop sketches/prototype of your project.
+- [x] Develop sketches/prototype of your project.
 
 ### Final deliverables
 
