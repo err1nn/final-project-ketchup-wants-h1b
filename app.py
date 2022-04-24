@@ -152,4 +152,4 @@ elif feature_selection == 'Approval Probability Prediction Model':
         probability = rf.predict_proba(test)[0][1]
     
     # Output prediction
-        st.subheader('The probability of certified is ' + str(round(probability,3)*100)+'%.')
+        st.subheader('The probability of getting certification for your H1B is ' + str(round(probability,3)*100)+'%.')
