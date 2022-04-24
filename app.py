@@ -1,7 +1,5 @@
 from os import sep
-from time import sleep
 import streamlit as st
-import seaborn as sns
 import pandas as pd
 import altair as alt
 import joblib
