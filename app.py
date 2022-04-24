@@ -41,6 +41,31 @@ state_code = load_data(url_state).reset_index()
 country_code = load_data(url_country).reset_index()
 rf = joblib.load("rf.pkl")
 
+# Geo Data Processing for Maps
+
+# Chart 1: US States
+states = alt.topo_feature(data.us_10m.url, 'states')
+
+employer_data = employer[['State', 'Approval', 'Denial', 'Employer']] \
+    .groupby('State').agg({'Approval':'sum','Denial':'sum','Employer':lambda x: x.nunique()}) \
+    .reset_index()
+employer_data = pd.merge(employer_data, state_code, how='right', \
+                             left_on=['State'], right_on=['Abbr'])
+employer_data = employer_data.drop(['State_x', 'Abbr'], axis=1)
+
+world = alt.topo_feature(data.world_110m.url, "countries")
+
+# Chart 4: World
+country_code['name'] = country_code['name'].str.upper()
+    
+application = pd.merge(application, country_code, how='left',
+                       left_on='COUNTRY_OF_CITIZENSHIP', right_on='name')
+application = application.drop(['name'],axis=1)
+application['country-code'] = application['country-code'].astype('Int64')
+    
+applicant_data = application[['CASE_NUMBER', 'COUNTRY_OF_CITIZENSHIP', 'country-code', 'JOB_TITLE']]
+    
+
 
 # ===================================== PART 1: Visualization =====================================
 
@@ -54,21 +79,21 @@ feature_selection = st.sidebar.radio(
 major_list = application.FOREIGN_WORKER_INFO_MAJOR.value_counts() \
     [application.FOREIGN_WORKER_INFO_MAJOR.value_counts()>50].index
 major_selection = st.sidebar.selectbox(
-    'Select or Type in Your Interested Major:',
+    'Select or Type in Your Interested Major',
     major_list,
+)
+
+state_list = application.WORKSITE_STATE.unique()
+state_selection = st.sidebar.selectbox(
+    'Select or Type in Your Interested Worksite State',
+    state_list
 )
 
 job_list = application.JOB_TITLE.value_counts() \
     [application.JOB_TITLE.value_counts()>50].index
 job_selection = st.sidebar.selectbox(
-    'Select or Type in Your Interested Job Title:',
+    'Select or Type in Your Interested Job Title',
     job_list
-)
-
-state_list = application.WORKSITE_STATE.unique()
-state_selection = st.sidebar.selectbox(
-    'Select or Type in Your Interested Worksite State:',
-    state_list
 )
 
 categorized_by = st.sidebar.radio(
@@ -80,20 +105,10 @@ categorized_by = st.sidebar.radio(
 
 if feature_selection == 'Data Visualization Dashboard':
     
-    # Chart 1
-    st.subheader("Let's find out where the employers offering visa sponsorships are 🔍")
-    
-    ## Data processing
-    states = alt.topo_feature(data.us_10m.url, 'states')
+    # ===== Chart 1 US States Map=====
+    st.subheader("🔍 Let's find out where the employers offering H-1B sponsorship are")
+    st.text("Count of distinct employers who offer H-1B sponsorship in each state.")
 
-    employer_data = employer[['State', 'Approval', 'Denial', 'Employer']] \
-        .groupby('State').agg({'Approval':'sum','Denial':'sum','Employer':lambda x: x.nunique()}) \
-        .reset_index()
-    employer_data = pd.merge(employer_data, state_code, how='right', \
-                             left_on=['State'], right_on=['Abbr'])
-    employer_data = employer_data.drop(['State_x', 'Abbr'], axis=1)
-    
-    ## Chart
     employer_chart = alt.Chart(states).mark_geoshape(
         stroke = 'lightgray'
     ).encode(
@@ -102,7 +117,7 @@ if feature_selection == 'Data Visualization Dashboard':
                    alt.Tooltip("Employer:Q", title='Employers')]
     ).transform_lookup(
         lookup='id',
-        from_=alt.LookupData(employer_data, 'Id', ["Employer"])
+        from_=alt.LookupData(employer_data, 'Id', ["State_y","Employer"])
     ).properties(
         width=800,
         height=500
@@ -112,17 +127,15 @@ if feature_selection == 'Data Visualization Dashboard':
         
     st.write(employer_chart)
 
-    # Chart 2: Top 10 job titles for each major
-    st.subheader('Select your major to see the top 10 job titles 👀')
+    # ===== Chart 2 Top 10 Job Title =====
+    st.subheader('👀 What are the Top 10 job titles of your major?')
     
-    ## Data Processing
     job_data = application[application['FOREIGN_WORKER_INFO_MAJOR']==major_selection] \
         .groupby([categorized_by,'JOB_TITLE']) \
         .count() \
         .sort_values('CASE_NUMBER', ascending=False) \
         .reset_index()
     
-    ## Chart
     st.text('There are ' + str(job_data['CASE_NUMBER'].sum()) +' applicants majored in ' + major_selection)
 
     job_chart = alt.Chart(job_data, 
@@ -131,7 +144,7 @@ if feature_selection == 'Data Visualization Dashboard':
         tooltip = True
     ).encode(
         x = alt.X('CASE_NUMBER', title='Count'),
-        y = alt.Y('JOB_TITLE', sort='-x'),
+        y = alt.Y('JOB_TITLE', sort='-x', title=""),
         color = categorized_by
     ).transform_window(
         rank = 'rank(CASE_NUMBER)',
@@ -144,34 +157,40 @@ if feature_selection == 'Data Visualization Dashboard':
         
     st.write(job_chart)
 
-    # Chart 3
-    st.subheader('Select the state you reside in to see the wage distribution 💰')
+    # ===== Chart 3 Wage Boxplots=====
+    st.subheader('💰 How much H-1B applicants earn in the state you work')
     
-    # Chart 4
-    st.subheader("Select your job title to see where other applicants in the same position come from 🌍")
+    wage_data = application[application['WORKSITE_STATE']==state_selection] \
+        .sort_values('WAGE_OFFER_FROM') \
+        .reset_index()
     
-    ## Data Processing
-    world = alt.topo_feature(data.world_110m.url, "countries")
-
-    country_code['name'] = country_code['name'].str.upper()
+    wage_chart = alt.Chart(wage_data).mark_boxplot(
+        extent='min-max',
+        size=45
+    ).encode(
+        x = alt.X('WAGE_OFFER_FROM:Q', title='Wage'),
+        y = alt.Y('WORKSITE_STATE:N', title="")
+    ).properties(
+        width=800,
+        height=200
+    )
     
-    application = pd.merge(application, country_code, how='left',
-                           left_on='COUNTRY_OF_CITIZENSHIP', right_on='name')
-    application = application.drop(['name'],axis=1)
-    application['country-code'] = application['country-code'].astype('Int64')
+    st.write(wage_chart)
     
-    ### Data Cleaning
-    applicant_data = application[['CASE_NUMBER', 'COUNTRY_OF_CITIZENSHIP', 'country-code', 'JOB_TITLE']]
+    # ===== Chart 4 World Map =====
+    st.subheader("🌍 For H-1B applicants who work in the same position as you do, where are they from?")
     
-    applicant_data = applicant_data[applicant_data['JOB_TITLE']=='Software Engineer'] \
+    applicant_data = applicant_data[applicant_data['JOB_TITLE']==job_selection] \
         .groupby(['COUNTRY_OF_CITIZENSHIP']) \
         .agg({'CASE_NUMBER' : 'count', 'country-code' : 'first'}) \
         .reset_index()
+
+    st.text('There are ' + str(applicant_data['CASE_NUMBER'].sum()) +' applicants with a job title "' + job_selection +'"')
     
-    ## Chart
     background = alt.Chart(world).mark_geoshape(
         fill='lightgray',
-        stroke='white'
+        stroke="black",
+        strokeWidth=0.15
     ).properties(
         width=800,
         height=500
@@ -183,7 +202,7 @@ if feature_selection == 'Data Visualization Dashboard':
                    alt.Tooltip("CASE_NUMBER:Q", title='H-1B Applicants')]
     ).transform_lookup(
         lookup='country-code',
-        from_=alt.LookupData(world, 'country-code', fields=["type", "properties", "geometry"])
+        from_=alt.LookupData(world, 'id', ["type", "properties", "geometry"])
     ).properties(
         width=800,
         height=500
@@ -200,7 +219,7 @@ if feature_selection == 'Data Visualization Dashboard':
 # Prediction Model
 elif feature_selection == 'Approval Probability Prediction Model':
 
-    st.subheader("Enter your information:")
+    st.subheader("Enter your information ⌨️")
     ml_employer_list = sorted(ml_data.EMPLOYER_NAME.unique())
     ml_state_list = sorted(ml_data.WORKSITE_STATE.unique())
     ml_job_list = ml_data.JOB_TITLE.unique()
